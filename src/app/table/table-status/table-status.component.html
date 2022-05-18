@@ -1,1 +1,2 @@
-<p>{{status}}</p>
+<p *ngIf="status==0" class="fw-bold text-red">Đã nghỉ</p>
+<p *ngIf="status==1" class="fw-bold text-green">Đang làm việc</p>

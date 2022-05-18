@@ -16,13 +16,15 @@
             <td>
                 <app-table-name [name]="teacher.name"></app-table-name>
             </td>
-            <td>{{teacher.age}}</td>
+            <td>
+                <p class="fw-bold">{{teacher.age}}</p>
+            </td>
             <td>
                 <!-- <span *ngIf="teacher.gender === 1">Nam</span>
           <span *ngIf="teacher.gender === 0">Nu</span> -->
 
 
-                <app-table-gender [gender]="teacher.gender ? 'Nữ' : 'Nam'"></app-table-gender>
+                <app-table-gender [gender]="teacher.gender"></app-table-gender>
             </td>
             <td>
                 <!-- <img src="{{teacher.avatar}}" alt="" width="50px" > -->
@@ -34,7 +36,7 @@
             <td>
                 <!-- <span *ngIf="teacher.status === 1">Dang lam viec</span>
           <span *ngIf="teacher.status === 0">Da nghi</span> -->
-                <app-table-status [status]="teacher.status ? 'Đang làm việc ': 'Đã nghỉ'"></app-table-status>
+                <app-table-status [status]="teacher.status"></app-table-status>
             </td>
         </tr>
     </tbody>

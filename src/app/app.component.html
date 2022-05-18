@@ -1,13 +1,86 @@
 <div class="container">
-  <h3>DS TEACHERS</h3>
-  <div>
-    <app-table [user]="teachers"></app-table>
-  </div>
+    <div>
+        <p>Form đăng kí thông tin giảng viên !!!</p>
+        <form action="">
+            <div class="form-group">
+                <label for="">Tên GV</label>
+                <input type="text" class="form-control" (input)="onInput($event, 'name')" [value]="inputValues.name">
+            </div>
+            <div class="form-group">
+                <label for="">Tuổi GV</label>
+                <input type="number" class="form-control" (input)="onInput($event, 'age')" [value]="inputValues.age">
+            </div>
+            <div class="form-group">
+                <label for="">GIỚI TÍNH</label>
+                <div class="form-check">
+                    <input 
+                    class="form-check-input" 
+                    type="radio"
+                    (input)="onInput($event, 'gender')"
+                    [checked]="inputValues.gender === '1'"
+                    [value]="1" >
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Nam
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" 
+                    type="radio"
+                    (input)="onInput($event, 'gender')"
+                    [checked]="inputValues.gender === '0'"
+                    [value]="0" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Nữ
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">ẢNH ĐẠI DIỆN</label>
+                <input type="text" class="form-control" (input)="onInput($event, 'avatar')" [value]="inputValues.avatar">
+            </div>
+            <div class="form-group">
+                <label for="">TRẠNG THÁI</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" 
+                    type="radio"
+                    (input)="onInput($event,'status')"
+                    [checked]="inputValues.status === '1'"
+                    [value]="1">
+                    <label class="form-check-label" for="inlineRadio1">
+                        Đang làm việc 
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" 
+                    type="radio"
+                    (input)="onInput($event,'status')"
+                    [checked]="inputValues.status === '0'"
+                    [value]="0">
+                    <label class="form-check-label" for="inlineRadio1">
+                        Đã nghỉ
+                    </label>
+                </div>
+            </div>
+            <div>
+                <button type="button" (click)="onSubmit()" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+    </div>
 
-  <div>
-  Ten : <app-name [name]="StudentName"></app-name>
-  MaSV : <app-identity [id]="StudentId"></app-identity>
-  </div>
-  
+    <div class="d-flex justify-content-center badge bg-primary text-wrap fs-3 " (click)="ClickH1()">DS TEACHERS
+        {{studentName}}</div>
+    <button type="button" class="btn btn-outline-info btn-sm" (click)="changeTableStatus()">{{ShowStatus ? 'Ẩn' :
+        'Hiện'}}
+        bảng Table</button>
+    <div>
+        <app-table [user]="teachers" *ngIf="ShowStatus" class="{{ShowStatus ? 'display-block' : 'display-none'}}">
+        </app-table>
+    </div>
+
+    <div>
+        Ten : <app-name [name]="StudentName"></app-name>
+        MaSV : <app-identity [id]="StudentId"></app-identity>
+    </div>
+
 
 </div>
