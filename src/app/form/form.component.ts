@@ -40,10 +40,31 @@ export class FormComponent implements OnInit {
             .sort((a, b) => a - b)
         // console.log(userIds)
         const newId = userIds[userIds.length - 1]
-        this.users.push({
-            ...userForm.value,
-            id: newId + 1
-        });
+        // Nếu inputValue có id = 0 thì là thêm mới => 2
+        // Nếu inputValue có id !=0 thì là edit => 2.1
+
+        if (this.inputValues.id == 0) {
+            // 2.thêm vào mảng
+            this.users.push ({
+                ...userForm.value,
+                id: newId + 1
+            })
+        } else {
+            // 2.1 Edit
+            const idx = this.users.findIndex((user) => user.id === this.inputValues.id)
+            if(idx > -1){
+                this.users[idx] = {
+                    ...userForm.value,
+                    id: this.inputValues.id
+                }
+            }
+            // console.log(idx);
+            
+        }
+        // this.users.push({
+        //     ...userForm.value,
+        //     id: newId + 1
+        // });
         userForm.resetForm({
             name: '',
             age: 0,
